@@ -4,5 +4,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
-    path('',include('test_app.urls')),
+    path('', include('test_app.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ]

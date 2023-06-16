@@ -7,6 +7,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 class TestGroup(models.Model):
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
@@ -22,4 +23,4 @@ class Test(models.Model):
     test_group = models.ForeignKey(TestGroup, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.question.name
+        return self.question

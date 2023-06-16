@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}
+    Foydalanuvchi ma'lumotlarini tahrirlash
+{% endblock %}
+
+{% block content %}
+    <p3>Foydalanuvchi ma'lmumotlarini tahrirlash.</p3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Tahrirlash</button>
+    </form>
+{% endblock %}

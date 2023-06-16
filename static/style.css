@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-container {
+    height: 100%;
+    width: 60%;
+}
+
+.test-box {
+    background-color: #cfcfcf;
+    border-radius: 6px;
+    margin: 10px;
+    padding: 30px;
+}
+.test-box .test-box__q p {
+    display: inline;
+}
+
+.opt-box {
+    margin: 5px;
+    padding: 2px;
+}
+.opt-box p {
+    padding: 5px 10px;
+    display: inline;
+}
+
+.red-back {
+    border-radius: 6px;
+    background-color: #db5757;
+}
+
+.green-back {
+    border-radius: 6px ;
+    background-color: #68ad68;
+}

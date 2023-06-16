@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Natijalar
+{% endblock %}
+
+{% block content %}
+    <h3>{{ test_group.name }} testi uchun natijalaringiz</h3>
+    <h4>To'g'ri javoblar soni: {{ correct }}</h4>
+    <h4>Jami testlar soni: {{ all }}</h4>
+
+    {% for test in tests %}
+        <div class="test-box">
+            <div class="test-box__q">{{ forloop.counter }}. {{ test.test_data.question | safe }}</div>
+            <div class="opt-box {% if test.test_data.ans == 1 %} green-back {% elif test.user_ans == 1 %} red-back {% endif %} ">
+                {{ test.test_data.option1 | safe }}
+            </div>
+
+            <div class="opt-box {% if test.test_data.ans == 2 %} green-back {% elif test.user_ans == 2 %} red-back {% endif %} ">
+                {{ test.test_data.option2 | safe }}
+            </div>
+
+            <div class="opt-box {% if test.test_data.ans == 3 %} green-back {% elif test.user_ans == 3 %} red-back {% endif %} ">
+                {{ test.test_data.option3 | safe }}
+            </div>
+
+            <div class="opt-box {% if test.test_data.ans == 4 %} green-back {% elif test.user_ans == 4 %} red-back {% endif %} ">
+                {{ test.test_data.option4 | safe }}
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

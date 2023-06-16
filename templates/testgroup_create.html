@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %} Testlar guruhini yaratish {% endblock %}
+
+{% block content %}
+    <h3>Yangi testlar guruhi uchun nom kiriting.</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Yaratish</button>
+    </form>
+{% endblock %}

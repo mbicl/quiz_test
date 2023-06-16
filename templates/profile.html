@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}
+    Profil
+{% endblock %}
+
+{% block content %}
+    <h3>{{ user.first_name }} {{ user.last_name }} tomonidan yaratilgan testlar:</h3>
+    {% for test_group in test_groups %}
+        <div>
+            <a href="{% url 'testapp:testing' test_group.pk %}"> {{ test_group.name }} </a>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}
+    Testlar guruhi yaratish
+{% endblock %}
+
+{% block content %}
+    <form method="post" action="{% url 'testapp:testing' pk %}">
+        {% csrf_token %}
+        <label for="test_count">Testlar sonini tanlang:</label>
+        <input type="number" name="test_count" id="test_count">
+        <button type="submit">Boshlash</button>
+    </form>
+{% endblock %}

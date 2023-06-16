@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %} Testlar ro'yxati {% endblock %}
+
+{% block content %}
+    <h3>Mavjud testlar ro'yxati</h3>
+    {% for test_group in test_groups %}
+        <div>
+            <a href="{% url 'testapp:testgroup_detail' test_group.pk %}"> {{ test_group.name }} </a>
+        </div>
+    {% endfor %}
+
+{% endblock %}
