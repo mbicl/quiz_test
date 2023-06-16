@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %} Test yaratish {% endblock %}
 
 {% block content %}
-
+    <h3>Yangi test qo'shish</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ form.media }}
+        <button type="submit" class="btn">Yaratish</button>
+    </form>
 {% endblock %}

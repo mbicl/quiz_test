@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}
+    Foydalanuvchilar
+{% endblock %}
+
+{% block content %}
+    <h3>Foydalanuvchilar:</h3>
+    {% for user in users %}
+        <div class="a_link">
+            <a href="{% url 'users:profile' user.username %}"> {{ user.first_name }} {{ user.last_name }} </a>
+        </div>
+    {% endfor %}
+{% endblock %}

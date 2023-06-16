@@ -7,6 +7,23 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
+    <header>
+        <div class="center">
+            <h2><a href="{% url 'testapp:testgroup_list' %}">Quiz Test</a></h2>
+            <div class="header__right">
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'testapp:test_new' %}">Yangi test</a>
+                    <a href="{% url 'testapp:testgroup_new' %}">Yangi test guruhi</a>
+                    <a href="{% url 'users:profile' request.user.username %}">Profil</a>
+                    <a href="{% url 'users:logout' %}">Chiqish</a>
+                {% else %}
+                    <a href="{% url 'users:users_list' %}">Foydalanuvchilar</a>
+                    <a href="{% url 'users:login' %}">Login</a>
+                    <a href="{% url 'users:register' %}">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
     <div class="content-container">
         {% block content %}
         {% endblock %}
