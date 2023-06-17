@@ -1,5 +1,6 @@
 from pathlib import Path
 from decouple import config
+from os import path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -13,9 +14,9 @@ SECRET_KEY = config("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mbicl.jprq.live','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ["https://mbicl.jprq.live"]
+CSRF_TRUSTED_ORIGINS = ['*']
 
 # Application definition
 
@@ -110,8 +111,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR / "static/"]
-STATIC_ROOT = BASE_DIR / "staticfiles/"
+STATICFILES_DIRS = [path.join(BASE_DIR, "static/")]
+STATIC_ROOT = path.join(BASE_DIR, "staticfiles/")
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
