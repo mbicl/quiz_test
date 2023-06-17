@@ -4,9 +4,29 @@
 {% block title %} Register {% endblock %}
 
 {% block content %}
-    <form method="post">
+    <form method="POST" novalidate class="form-box">
         {% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit" class="btn">Register</button>
+        <h2>Ro'yxatdan o'tish </h2>
+
+        {% for field in form %}
+            <div class="input-box">
+                {% if field.errors %}
+                    <ul>
+                        {% for error in field.errors %}
+                            <li style="list-style: none;
+                                       color:white;
+                                       padding: 5px 10px;
+                                       background-color: #db5757;
+                                       border-radius: 4px;
+                            ">
+                                {{ error }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                {{ field.label_tag }} {{ field }}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn"> Jo'natish </button>
     </form>
 {% endblock %}

@@ -5,15 +5,20 @@
 
 {% block content %}
     <div class="header__right a_link">
-        {% if request.user.is_authenticated %}
+        {% if request.user.is_authenticated and request.user.username == user.username %}
             <a href="{% url 'users:edit' %}">Profilni tahrirlash</a>
         {% endif %}
-            <a href="{% url 'users:users_list' %}">Foydalanuvchilar</a>
+        <a href="{% url 'users:users_list' %}">Foydalanuvchilar</a>
     </div>
-    <h3>{{ user.first_name }} {{ user.last_name }} tomonidan yaratilgan testlar:</h3>
-    {% for test_group in test_groups %}
-        <div class="a_link">
-            <a href="{% url 'testapp:testgroup_detail' test_group.pk %}"> {{ test_group.name }} </a>
-        </div>
-    {% endfor %}
+    <div class="clean"></div>
+    <div class="form-box">
+        <h2>{{ user.first_name }} {{ user.last_name }} tomonidan yaratilgan testlar ro'yxati</h2>
+        {% for test_group in test_groups %}
+            <div class="a_link list-element">
+                <a href="{% url 'testapp:testgroup_detail' test_group.pk %}"> {{ test_group.name }} </a>
+                <span class="list-element__span">Testlar soni: {{ test_group.tests_count }} </span>
+                <span>|</span>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

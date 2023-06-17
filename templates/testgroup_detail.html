@@ -4,10 +4,12 @@
 {% endblock %}
 
 {% block content %}
-    <form method="post" action="{% url 'testapp:testing' pk %}">
+    <form method="post" action="{% url 'testapp:testing' pk %}" class="form-box">
         {% csrf_token %}
-        <label for="test_count">Testlar sonini tanlang:</label>
-        <input type="number" name="test_count" id="test_count">
+        <div class="input-box">
+            <label for="test_count">Testlar sonini tanlang:</label>
+            <input type="number" value="5" name="test_count" id="test_count" min="1" max="50"/>
+        </div>
         <button type="submit" class="btn">Boshlash</button>
     </form>
 {% endblock %}

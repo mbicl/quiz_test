@@ -5,10 +5,28 @@
 {% endblock %}
 
 {% block content %}
-    <p3>Foydalanuvchi ma'lmumotlarini tahrirlash.</p3>
-    <form method="post">
+    <form method="POST" novalidate class="form-box">
         {% csrf_token %}
-        {{ form | crispy }}
-        <button type="submit" class="btn">Tahrirlash</button>
+        <h2> Ma'lumotlarni tahrirlash </h2>
+        {% for field in form %}
+            <div class="input-box">
+                {% if field.errors %}
+                    <ul>
+                        {% for error in field.errors %}
+                            <li style="list-style: none;
+                                       color:white;
+                                       padding: 5px 10px;
+                                       background-color: #db5757;
+                                       border-radius: 4px;
+                            ">
+                                {{ error }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                {{ field.label_tag }} {{ field }}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn"> Saqlash </button>
     </form>
 {% endblock %}

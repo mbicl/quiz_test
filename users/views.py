@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import logout, login
 from django.contrib.auth.models import User
 from django.urls import reverse, reverse_lazy
+from django.db.models import Count
 from .forms import UserRegistrationForm, EditUserForm, LoginForm
 from test_app.models import TestGroup
 
@@ -33,6 +34,7 @@ class Register(CreateView):
         if form.is_valid():
             form.save()
             return redirect("users:login")
+        return render(r, "register.html", {"form": form})
 
 
 class Logout(LoginRequiredMixin, DetailView):
@@ -50,7 +52,7 @@ class Profile(View):
         test_groups = list(
             TestGroup.objects.filter(owner__username=username)
             .order_by("-created_at")
-            .all()
+            .annotate(tests_count=Count('test'))
         )
         return render(r, "profile.html", {"user": user, "test_groups": test_groups})
 
@@ -75,5 +77,6 @@ class EditUser(LoginRequiredMixin, UpdateView):
 class UsersListView(ListView):
     model = User
     template_name = 'users_list.html'
-    ordering = ['first_name','last_name']
+    ordering = ['first_name', 'last_name']
     context_object_name = 'users'
+    queryset = User.objects.annotate(testgroup_count=Count('test_group'))

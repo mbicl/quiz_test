@@ -4,8 +4,9 @@
 {% block title %} Test yaratish {% endblock %}
 
 {% block content %}
-    <h3>Yangi test qo'shish</h3>
-    <form method="post">
+
+    <form method="post" class="form-box">
+        <h2>Yangi test qo'shish</h2>
         {% csrf_token %}
         {{ form.as_p }}
         {{ form.media }}

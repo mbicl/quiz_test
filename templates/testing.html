@@ -4,31 +4,31 @@
 {% endblock %}
 
 {% block content %}
-    <h3>{{ test_group.name }}</h3>
-    <form method="post">
+    <form method="post" class="form-box">
+        <h2>{{ test_group.name }}</h2>
         {% csrf_token %}
         {% for test in tests %}
             <div class="test-box">
                 <div class="test-box__q">{{ forloop.counter }}. {{ test.question | safe }}</div>
 
                 <div class="opt-box">
-                    <input type="radio" id="opt1" name="{{ test.pk }}" value="1">
-                    <label for="opt1">{{ test.option1 | safe }}</label>
+                    <input type="radio" id="opt1{{test.pk}}" name="{{ test.pk }}" value="1">
+                    <label for="opt1{{test.pk}}">{{ test.option1 | safe }}</label>
                 </div>
 
                 <div class="opt-box">
-                    <input type="radio" id="opt2" name="{{ test.pk }}" value="2">
-                    <label for="opt2">{{ test.option2 | safe }}</label>
+                    <input type="radio" id="opt2{{test.pk}}" name="{{ test.pk }}" value="2">
+                    <label for="opt2{{test.pk}}">{{ test.option2 | safe }}</label>
                 </div>
 
                 <div class="opt-box">
-                    <input type="radio" id="opt3" name="{{ test.pk }}" value="3">
-                    <label for="opt3">{{ test.option3 | safe }}</label>
+                    <input type="radio" id="opt3{{test.pk}}" name="{{ test.pk }}" value="3">
+                    <label for="opt3{{test.pk}}">{{ test.option3 | safe }}</label>
                 </div>
 
                 <div class="opt-box">
-                    <input type="radio" id="opt4" name="{{ test.pk }}" value="4">
-                    <label for="opt4">{{ test.option4 | safe }}</label>
+                    <input type="radio" id="opt4{{test.pk}}" name="{{ test.pk }}" value="4">
+                    <label for="opt4{{test.pk}}">{{ test.option4 | safe }}</label>
                 </div>
             </div>
         {% endfor %}

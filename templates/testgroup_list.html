@@ -2,11 +2,20 @@
 {% block title %} Testlar ro'yxati {% endblock %}
 
 {% block content %}
-    <h3>Mavjud testlar ro'yxati</h3>
-    {% for test_group in test_groups %}
-        <div class="a_link">
-            <a href="{% url 'testapp:testgroup_detail' test_group.pk %}"> {{ test_group.name }} </a>
-        </div>
-    {% endfor %}
+    <div class="form-box">
+        <h2>Mavjud testlar ro'yxati</h2>
+        {% for test_group in test_groups %}
+            <div class="a_link list-element">
+                <a href="{% url 'testapp:testgroup_detail' test_group.pk %}"> {{ test_group.name }} </a>
+                <span class="list-element__span">Testlar soni: {{ test_group.tests_count }} </span>
+                <span>|</span>
+                <span class="list-element__span">
+                    Muallif:
+                    <a href="{% url 'users:profile' test_group.owner.username %}">{{ test_group.owner.username }}</a>
+                </span>
+                <span>|</span>
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}

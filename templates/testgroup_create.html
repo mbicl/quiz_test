@@ -4,10 +4,10 @@
 {% block title %} Testlar guruhini yaratish {% endblock %}
 
 {% block content %}
-    <h3>Yangi testlar guruhi uchun nom kiriting.</h3>
-    <form method="post">
+    <form method="post" class="form-box">
+        <h2>Yangi testlar guruhi uchun nom kiriting.</h2>
         {% csrf_token %}
-        {{ form | crispy }}
+        {{ form.as_p }}
         <button type="submit" class="btn">Yaratish</button>
     </form>
 {% endblock %}

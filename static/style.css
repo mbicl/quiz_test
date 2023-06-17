@@ -9,6 +9,10 @@ body {
     align-items: center;
 }
 
+.clean {
+    clear: both;
+    content: "";
+}
 header {
     position: fixed;
     top: 0;
@@ -68,20 +72,49 @@ header h2 a {
     border-radius: 6px;
     margin: 10px;
     padding: 30px;
+    width: 100%;
 }
 
 .test-box .test-box__q p {
     display: inline;
 }
-
+.test-box__q {
+    padding: 4px 10px;
+}
+.opt-box__ans {
+    margin: 5px;
+    padding: 3px 3px 3px 10px;
+    border-radius: 4px;
+    height: 20px;
+}
+.opt-box__ans p {
+    display: inline;
+    margin-left: 10px;
+}
 .opt-box {
     margin: 5px;
-    padding: 2px;
+    padding: 3px;
+    border-radius: 4px;
+    height: 20px;
 }
 
 .opt-box p {
     padding: 5px 10px;
     display: inline;
+}
+.opt-box input {
+    display: block;
+    float: left;
+    width: 4%;
+}
+.opt-box label {
+    display: block;
+    float: left;
+    width: 90%;
+}
+.opt-box:hover {
+    background-color: #00ad9c;
+    color: white;
 }
 
 .red-back {
@@ -125,4 +158,42 @@ header h2 a {
     background-color: white;
     color: #0e75b1;
     border: 1px solid #0e75b1;
+}
+
+.form-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+}
+
+.input-box {
+    padding: 5px 10px;
+    margin: 0;
+    width: 70%;
+}
+
+.input-box label, .input-box input {
+    display: block;
+    width: 100%;
+    margin: 5px;
+    padding: 5px 10px;
+}
+
+.list-element {
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 8px 10px;
+    width: 100%;
+}
+
+.list-element span {
+    float: right;
+}
+.list-element .list-element__span {
+    width: 25%;
+    text-align: center;
+    margin-left: 5px;
 }

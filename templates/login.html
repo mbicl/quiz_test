@@ -4,9 +4,20 @@
 {% block title %} Login {% endblock %}
 
 {% block content %}
-    <form method="post">
+    <form method="post" class="form-box">
+        <h2>Tizimga kirish</h2>
         {% csrf_token %}
-        {{ form|crispy }}
+        <div class="input-box">
+            <label for="id_username" class="form-label requiredField"> Foydalanuvchi nomi: </label>
+            <input type="text" name="username" required id="id_username">
+        </div>
+        <div class="input-box">
+            <label for="id_password" class="form-label requiredField"> Parol: </label>
+            <input type="password" name="password" required id="id_password">
+        </div>
+        {% if form.errors %}
+            <div class="red-back opt-box">Foydalanuvchi nomi yoki parol xato </div>
+        {% endif %}
         <button type="submit" class="btn">Login</button>
     </form>
 {% endblock %}

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy, reverse
+from django.db.models import Count
 from .models import TestGroup, Test
 from .forms import TestCreateForm
 from random import shuffle
@@ -12,6 +13,7 @@ class TestGroupListView(ListView):
     template_name = "testgroup_list.html"
     context_object_name = "test_groups"
     ordering = ["-created_at"]
+    queryset = TestGroup.objects.annotate(tests_count=Count('test'))
 
 
 class TestGroupCreateView(LoginRequiredMixin, CreateView):
@@ -32,7 +34,7 @@ class TestGroupCreateView(LoginRequiredMixin, CreateView):
 
 class TestGroupDetailView(View):
     def get(self, r, pk):
-        return render(self.request, "testgroup_detail.html", {"pk": pk})
+        return render(r, "testgroup_detail.html", {"pk": pk})
 
 
 class TestCreateView(LoginRequiredMixin, CreateView):
@@ -70,7 +72,12 @@ class Testing(View):
             cnt = 0
             tests = list()
             for t in tests_list:
-                tests.append({"test_data": t, "user_ans": int(r.POST.get(str(t.pk)))})
+                user_ans = r.POST.get(str(t.pk))
+                if user_ans == None:
+                    tests.append({"test_data": t, "user_ans": 0})
+                else:
+                    tests.append({"test_data": t, "user_ans": int(user_ans)})
+
                 if str(t.ans) == str(r.POST.get(str(t.pk))):
                     cnt += 1
             context = {
