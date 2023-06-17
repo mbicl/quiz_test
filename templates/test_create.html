@@ -6,10 +6,10 @@
 {% block content %}
 
     <form method="post" class="form-box">
-        <h2>Yangi test qo'shish</h2>
+        <h2>Yangi test yaratish</h2>
         {% csrf_token %}
         {{ form.as_p }}
         {{ form.media }}
-        <button type="submit" class="btn">Yaratish</button>
+        <button type="submit" class="btn">Saqlash</button>
     </form>
 {% endblock %}
