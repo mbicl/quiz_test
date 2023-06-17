@@ -120,11 +120,13 @@ header h2 a {
 .red-back {
     border-radius: 6px;
     background-color: #db5757;
+    color: white;
 }
 
 .green-back {
     border-radius: 6px;
     background-color: #68ad68;
+    color: white;
 }
 
 .a_link {
