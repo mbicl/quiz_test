@@ -19,7 +19,7 @@ class Test(models.Model):
     option2 = RichTextUploadingField()
     option3 = RichTextUploadingField()
     option4 = RichTextUploadingField()
-    ans = models.IntegerField(default=1, validators=(MinValueValidator(1), MaxValueValidator(4)))
+    answer = models.IntegerField(default=1, validators=(MinValueValidator(1), MaxValueValidator(4)))
     test_group = models.ForeignKey(TestGroup, on_delete=models.CASCADE, related_name='test')
 
     def __str__(self):

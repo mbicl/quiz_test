@@ -42,7 +42,7 @@ class TestCreateView(LoginRequiredMixin, CreateView):
     model = Test
 
     def get(self, r):
-        form = TestCreateForm()
+        form = TestCreateForm(user=r.user)
         return render(r, "test_create.html", {"form": form})
 
     def post(self, r):
@@ -78,7 +78,7 @@ class Testing(View):
                 else:
                     tests.append({"test_data": t, "user_ans": int(user_ans)})
 
-                if str(t.ans) == str(r.POST.get(str(t.pk))):
+                if str(t.answer) == str(r.POST.get(str(t.pk))):
                     cnt += 1
             context = {
                 "test_group": TestGroup.objects.get(pk=pk),
