@@ -13,19 +13,19 @@
         {% for test in tests %}
             <div class="test-box">
                 <div class="test-box__q {% if test.user_ans == 0 %} red-back {% endif %}">{{ forloop.counter }}. {{ test.test_data.question | safe }}</div>
-                <div class="opt-box__ans {% if test.test_data.ans == 1 %} green-back {% elif test.user_ans == 1 %} red-back {% endif %} ">
+                <div class="opt-box__ans {% if test.test_data.answer == 1 %} green-back {% elif test.user_ans == 1 %} red-back {% endif %} ">
                     &bullet;{{ test.test_data.option1 | safe }}
                 </div>
 
-                <div class="opt-box__ans {% if test.test_data.ans == 2 %} green-back {% elif test.user_ans == 2 %} red-back {% endif %} ">
+                <div class="opt-box__ans {% if test.test_data.answer == 2 %} green-back {% elif test.user_ans == 2 %} red-back {% endif %} ">
                     &bullet;{{ test.test_data.option2 | safe }}
                 </div>
 
-                <div class="opt-box__ans {% if test.test_data.ans == 3 %} green-back {% elif test.user_ans == 3 %} red-back {% endif %} ">
+                <div class="opt-box__ans {% if test.test_data.answer == 3 %} green-back {% elif test.user_ans == 3 %} red-back {% endif %} ">
                     &bullet;{{ test.test_data.option3 | safe }}
                 </div>
 
-                <div class="opt-box__ans {% if test.test_data.ans == 4 %} green-back {% elif test.user_ans == 4 %} red-back {% endif %} ">
+                <div class="opt-box__ans {% if test.test_data.answer == 4 %} green-back {% elif test.user_ans == 4 %} red-back {% endif %} ">
                     &bullet;{{ test.test_data.option4 | safe }}
                 </div>
             </div>
